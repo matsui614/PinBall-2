@@ -18,9 +18,12 @@ public class BrightnessRegulator : MonoBehaviour
     // ターゲットのデフォルトの色
     Color defaultColor = Color.white;
 
+    private GameObject ScoreText;
+
     // Start is called before the first frame update
     void Start ()
     {
+        ScoreText = GameObject.Find("ScoreText");
 
         // タグによって光らせる色を変える
         if (tag == "SmallStarTag")
@@ -65,5 +68,6 @@ public class BrightnessRegulator : MonoBehaviour
     {
         //角度を180に設定
         this.degree = 180;
+        ScoreText.GetComponent<ScoreManager>().score = ScoreText.GetComponent<ScoreManager>().score + 10;
     }
 }

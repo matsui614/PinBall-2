@@ -7,12 +7,15 @@ public class StarController : MonoBehaviour
 
     //回転速度
     private float rotSpeed = 0.3f;
+    private GameObject ScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
         //回転を開始する角度を設定
         this.transform.Rotate (0,Random.Range(0, 360),0);
+
+        ScoreText = GameObject.Find("ScoreText");
     }
 
     // Update is called once per frame
@@ -20,5 +23,9 @@ public class StarController : MonoBehaviour
     {
         //回転
         this.transform.Rotate (0, this.rotSpeed, 0);
+    }
+    void OnCollisionEnter(Collision other)//衝突
+    {
+        ScoreText.GetComponent<ScoreManager>().score = ScoreText.GetComponent<ScoreManager>().score + 50;
     }
 }
